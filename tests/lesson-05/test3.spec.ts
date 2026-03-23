@@ -34,12 +34,12 @@ test('Bài học 3: Todo page', async ({ page }) => {
             const locatorDeleteHasIndex = "//li//span[text() = '" + contentArr[i] + "']/../div//button[text() = 'Delete']";
             console.log(locatorDeleteHasIndex)
             await page.locator(locatorDeleteHasIndex).waitFor({ state: 'visible' });
-            await page.click(locatorDeleteHasIndex);
             page.once('dialog', async dialog => {
                 await dialog.accept();
             });
-        }
+            await page.click(locatorDeleteHasIndex);
 
+        }
     }
 
     await test.step('Thêm mới 100 todo item có nội dung “Todo <i>”', async () => {
